@@ -63,8 +63,7 @@ export class PaymentTableComponent implements OnInit {
           securityCode: result.SecurityCode,
           amount: result.Amount
         }
-        console.log(result);
-        console.log(this.obj)
+
         this.payment.postPayment(this.obj).subscribe(x => location.reload())
       }
     });
@@ -93,7 +92,7 @@ export class PaymentTableComponent implements OnInit {
       dialogRef.afterClosed().subscribe(result => {
 
         if (result) {
-          console.log(result) //update didalam
+          //update didalam
           this.updobj = { //ini gk perlu karna obj udh 2 arah transfernya
             paymentDetailId: result.id,
             cardOwnerName: result.CardOwnerName,
