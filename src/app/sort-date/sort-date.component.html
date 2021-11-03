@@ -57,7 +57,7 @@
       <input max="999999999" type="number" matInput [(ngModel)]="Amount2" [formControl]="Amount2C">
     </mat-form-field>
     <button style="margin-left: 50px;" class="btn btn-primary" (click)="searchAmount()"
-      [disabled]="!Amount1 || !Amount2">Search</button>
+      [disabled]="(!Amount1 || Amount1C.invalid) || (!Amount2 || Amount2C.invalid)">Search</button>
     <p style="font-size: small;">Max Input: 999,999,999</p>
   </div>
 
