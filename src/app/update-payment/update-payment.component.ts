@@ -36,7 +36,8 @@ export class UpdatePaymentComponent implements OnInit {
   }
 
   getErrorMessageAmount() {
-    return this.Amount.hasError('required') ? 'you must enter a value' : ''
+    return this.Amount.hasError('required') ? 'you must enter a value' :
+      this.Amount.hasError('max') ? 'Max: 999,999,999' : ''
   }
 
   onNoClick(): void {

@@ -49,15 +49,16 @@
   <div *ngIf="selected==3">
     <mat-form-field class="inputWidth" appearance="legacy">
       <p style="float: right;">Amount 1 -</p>
-      <input type="number" matInput [(ngModel)]="Amount1" [formControl]="Amount1C">
+      <input max="999999999" type="number" matInput [(ngModel)]="Amount1" [formControl]="Amount1C">
     </mat-form-field>
 
     <mat-form-field class="inputWidth" appearance="legacy">
       <p style="float: left;">- Amount 2</p>
-      <input type="number" matInput [(ngModel)]="Amount2" [formControl]="Amount2C">
+      <input max="999999999" type="number" matInput [(ngModel)]="Amount2" [formControl]="Amount2C">
     </mat-form-field>
     <button style="margin-left: 50px;" class="btn btn-primary" (click)="searchAmount()"
       [disabled]="!Amount1 || !Amount2">Search</button>
+    <p style="font-size: small;">Max Input: 999,999,999</p>
   </div>
 
 

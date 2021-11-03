@@ -36,7 +36,7 @@
 
   <mat-form-field class="inputWidth" appearance="legacy">
     <p>Amount</p>
-    <input type="number" matInput [(ngModel)]="data.Amount" [formControl]="Amount">
+    <input max="999999999" type="number" matInput [(ngModel)]="data.Amount" [formControl]="Amount">
     <mat-error *ngIf="Amount.invalid">{{getErrorMessageAmount()}}</mat-error>
   </mat-form-field>
 </div>
