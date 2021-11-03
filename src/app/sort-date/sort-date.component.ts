@@ -33,7 +33,10 @@ export class SortDateComponent implements OnInit {
   Amount2C = new FormControl('');
 
   refresh() {
-    location.reload()
+    this.payment.getPayment().subscribe(x => {
+      this.test = x
+    })
+    this.selected = 0
   }
 
   selected: any
