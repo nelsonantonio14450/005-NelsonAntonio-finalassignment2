@@ -1,0 +1,92 @@
+<h1 style="text-align: center;">Payment Sorting</h1>
+<button style="float: right;" class="btn btn-warning" (click)="refresh()">Refresh</button>
+
+<mat-form-field style="width: 200px; float: left;" appearance="legacy">
+  <p>Sort Option Picker</p>
+  <mat-select [(value)]="selected">
+    <mat-option value="1">
+      Expired Date Sort
+    </mat-option>
+    <mat-option value="2">
+      Paid Date Sort
+    </mat-option>
+    <mat-option value="3">
+      Amount Sort
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+
+<form>
+  <div *ngIf="selected==1">
+    <mat-form-field class="inputWidth" appearance="legacy">
+      <p style="float: right;">Expiration Date 1 -</p>
+      <input type="date" matInput [(ngModel)]="ExpDate1" [formControl]="ExpDate1C">
+    </mat-form-field>
+
+    <mat-form-field class="inputWidth" appearance="legacy">
+      <p style="float: left;">- Expiration Date 2</p>
+      <input type="date" matInput [(ngModel)]="ExpDate2" [formControl]="ExpDate2C">
+    </mat-form-field>
+    <button style="margin-left: 50px;" class="btn btn-primary" (click)="searchExpfunc()"
+      [disabled]="!ExpDate1 && !ExpDate2">Search</button>
+  </div>
+
+  <div *ngIf="selected==2">
+    <mat-form-field class="inputWidth" appearance="legacy">
+      <p style="float: right;">Paid Date 1 -</p>
+      <input type="date" matInput [(ngModel)]="PaidDate1" [formControl]="PaidDate1C">
+    </mat-form-field>
+
+    <mat-form-field class="inputWidth" appearance="legacy">
+      <p style="float: left;">- Paid Date 2</p>
+      <input type="date" matInput [(ngModel)]="PaidDate2" [formControl]="PaidDate2C">
+    </mat-form-field>
+    <button style="margin-left: 50px;" class="btn btn-primary" (click)="searchPaidfunc()"
+      [disabled]="!PaidDate1 && !PaidDate2">Search</button>
+  </div>
+
+  <div *ngIf="selected==3">
+    <mat-form-field class="inputWidth" appearance="legacy">
+      <p style="float: right;">Amount 1 -</p>
+      <input type="number" matInput [(ngModel)]="Amount1" [formControl]="Amount1C">
+    </mat-form-field>
+
+    <mat-form-field class="inputWidth" appearance="legacy">
+      <p style="float: left;">- Amount 2</p>
+      <input type="number" matInput [(ngModel)]="Amount2" [formControl]="Amount2C">
+    </mat-form-field>
+    <button style="margin-left: 50px;" class="btn btn-primary" (click)="searchAmount()"
+      [disabled]="!Amount1 || !Amount2">Search</button>
+  </div>
+
+
+
+</form>
+
+
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Owner Name</th>
+      <th scope="col">Card Number</th>
+      <th scope="col" [ngStyle]="{'color': selected==1 ? 'red' : 'black' }">Exp. Date</th>
+      <th scope="col" [ngStyle]="{'color': selected==2 ? 'red' : 'black' }">Paid At</th>
+      <th scope="col" [ngStyle]="{'color': selected==3 ? 'red' : 'black' }">Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let payment of test">
+      <td>{{payment.cardOwnerName}}</td>
+      <td>{{payment.cardNumber}}</td>
+      <td [ngStyle]="{'background-color': selected==1 ? 'yellow' : 'white' }">
+        {{payment.expirationDate | date:"dd-MM-yyyy"}}</td>
+      <td [ngStyle]="{'background-color': selected==2 ? 'yellow' : 'white' }">{{payment.paidAt | date:"dd-MM-yyyy"}}
+      </td>
+      <td [ngStyle]="{'background-color': selected==3 ? 'yellow' : 'white' }">{{payment.amount | number:'1.0':'en-US' }}
+      </td>
+    </tr>
+
+  </tbody>
+</table>

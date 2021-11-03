@@ -1,0 +1,7 @@
+.example::-webkit-scrollbar {
+  display: none;
+}
+
+.inputWidth {
+  width: 500px;
+}

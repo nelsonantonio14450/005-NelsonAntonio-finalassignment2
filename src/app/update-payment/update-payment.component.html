@@ -1,0 +1,52 @@
+<div mat-dialog-content class="example">
+  <h3 style="text-align: center;">Update Payment - ID: {{data.id}} </h3><br>
+
+
+  <mat-form-field class="inputWidth" appearance="standard">
+    <p>Card Owner Name</p>
+    <input matInput [(ngModel)]="data.CardOwnerName" [formControl]="CardOwnerName">
+    <mat-error *ngIf="CardOwnerName.invalid">{{getErrorMessageCON()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="inputWidth" appearance="legacy">
+    <p>Card Number</p>
+    <input required matInput [(ngModel)]="data.CardNumber" [formControl]="CardNumber">
+    <mat-error *ngIf="CardNumber.invalid">{{getErrorMessageCN()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="inputWidth" appearance="legacy">
+    <p>Expiration Date: {{data.ExpirationDate | date:"dd-MM-yyyy"}} </p>
+    <mat-label>*if there is no change, no need to touch this*</mat-label>
+    <input type="date" matInput [(ngModel)]="data.ExpirationDate" [formControl]="ExpirationDate">
+    <mat-error *ngIf="ExpirationDate.invalid">{{getErrorMessageED()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="inputWidth" appearance="legacy">
+    <p>Paid At: {{data.PaidAt | date:"dd-MM-yyyy"}}</p>
+    <mat-label>*if there is no change, no need to touch this*</mat-label>
+    <input type="date" matInput [(ngModel)]="data.PaidAt" [formControl]="PaidAt">
+    <mat-error *ngIf="PaidAt.invalid">{{getErrorMessagePA()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="inputWidth" appearance="legacy">
+    <p>Security Code</p>
+    <input type="password" matInput [(ngModel)]="data.SecurityCode" [formControl]="SecurityCode">
+    <mat-error *ngIf="SecurityCode.invalid">{{getErrorMessageSC()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="inputWidth" appearance="legacy">
+    <p>Amount</p>
+    <input type="number" matInput [(ngModel)]="data.Amount" [formControl]="Amount">
+    <mat-error *ngIf="Amount.invalid">{{getErrorMessageAmount()}}</mat-error>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button *ngIf="!CardOwnerName.invalid 
+      && !CardNumber.invalid
+      && !ExpirationDate.invalid
+      && !PaidAt.invalid
+      && !SecurityCode.invalid
+      && !Amount.invalid
+     " [mat-dialog-close]="data" cdkFocusInitial>Update</button>
+</div>

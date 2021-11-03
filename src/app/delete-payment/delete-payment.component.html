@@ -1,0 +1,23 @@
+<div mat-dialog-content class="example">
+  <h3 style="text-align: center;">Delete Staff - {{data.id}} </h3><br>
+  <div class="row">
+    <h5 class="col-sm-6" style="float: left;">Card Owner Name:</h5>
+    <h5 class="col-sm-6" style="float: right;"> {{data.CardOwnerName}}</h5>
+
+    <h5 class="col-sm-6" style="float: left;">Card Number: </h5>
+    <h5 class="col-sm-6" style="float: right;">{{data.CardNumber}}</h5>
+
+    <h5 class="col-sm-6" style="float: left;">Expiration Data :</h5>
+    <h5 class="col-sm-6" style="float: right;"> {{data.ExpirationDate | date:"dd-MM-yyyy"}}</h5>
+
+    <h5 class="col-sm-6" style="float: left;">Paid At : </h5>
+    <h5 class="col-sm-6" style="float: right;">{{data.PaidAt | date:"dd-MM-yyyy"}}</h5>
+
+    <h5 class="col-sm-6" style="float: left;">Amount: </h5>
+    <h5 class="col-sm-6" style="float: right;">{{data.Amount | number:'1.0':'en-US' }}</h5>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Delete</button>
+</div>

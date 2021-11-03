@@ -1,0 +1,29 @@
+<div class="row">
+  <button class="btn btn-success" style="float: left; margin-bottom: 50px; width: 100px;"
+    (click)="openDialog()">Create</button>
+  <h1 style="float: right; margin-bottom: 50;">Payment List</h1>
+
+  <table class="table table-striped table-bordered" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+    <thead>
+      <tr>
+        <th scope="col">Owner Name</th>
+        <th scope="col">Card Number</th>
+        <th scope="col">Exp. Date</th>
+        <th scope="col">Paid At</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let payment of test">
+        <td>{{payment.cardOwnerName}}</td>
+        <td>{{payment.cardNumber}}</td>
+        <td>{{payment.expirationDate | date:"dd-MM-yyyy"}}</td>
+        <td>{{payment.paidAt | date:"dd-MM-yyyy"}}</td>
+        <td>{{payment.amount | number:'1.0':'en-US' }}</td>
+        <td><button class="btn btn-warning" (click)="openDialogUpd(payment.paymentDetailId)">Update</button> | <button
+            class="btn btn-danger" (click)="openDeleteDialog(payment.paymentDetailId)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

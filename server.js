@@ -23,5 +23,5 @@ app
     .get('/*', (req, res) => res.sendFile('index.html', { root: './dist/payment' }))
 
     .listen(port, () => {
-        console.log(`my angular apps runnin hhtp://localhost:${port}`)
+        console.log(`my angular apps runnin http://localhost:${port}`)
     })
