@@ -8,7 +8,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
   styleUrls: ['./update-payment.component.css']
 })
 export class UpdatePaymentComponent implements OnInit {
-  CardOwnerName = new FormControl('', [Validators.required]);
+  CardOwnerName = new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z ]*')]);
   CardNumber = new FormControl('', [Validators.required, Validators.maxLength(16), Validators.pattern('[0-9]*')]);
   ExpirationDate = new FormControl('', [Validators.required]);
   PaidAt = new FormControl('', [Validators.required]);
@@ -16,7 +16,8 @@ export class UpdatePaymentComponent implements OnInit {
   Amount = new FormControl('', [Validators.required]);
 
   getErrorMessageCON() {
-    return this.CardOwnerName.hasError('required') ? 'you must enter a value' : ''
+    return this.CardOwnerName.hasError('required') ? 'you must enter a value' :
+      this.CardOwnerName.hasError('pattern') ? 'only char is acceptable' : ''
   }
 
   getErrorMessageCN() {

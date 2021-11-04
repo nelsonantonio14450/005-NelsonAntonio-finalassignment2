@@ -30,7 +30,8 @@
 
   <mat-form-field class="inputWidth" appearance="legacy">
     <p>Security Code</p>
-    <input type="password" matInput [(ngModel)]="data.SecurityCode" [formControl]="SecurityCode">
+    <mat-label>*Read Only*</mat-label>
+    <input [readonly]=true type="password" matInput [(ngModel)]="data.SecurityCode" [formControl]="SecurityCode">
     <mat-error *ngIf="SecurityCode.invalid">{{getErrorMessageSC()}}</mat-error>
   </mat-form-field>
 
