@@ -10,7 +10,7 @@
 
   <mat-form-field class="inputWidth" appearance="legacy">
     <p>Card Number</p>
-    <input required matInput [(ngModel)]="data.CardNumber" [formControl]="CardNumber">
+    <input type="text" required matInput [(ngModel)]="data.CardNumber" [formControl]="CardNumber">
     <mat-error *ngIf="CardNumber.invalid">{{getErrorMessageCN()}}</mat-error>
   </mat-form-field>
 
